@@ -1,66 +1,92 @@
-// miniprogram/pages/map/map.js
+// miniprogram/pages/map/index.js
+
 Page({
 
   /**
-   * Page initial data
+   * 页面的初始数据
    */
   data: {
-
+    he_tel: '18758266300',
+    she_tel: '15201826331',
+    latitude: 30.6206900000,
+    longitude: 120.5510600000,
+    hotelname: '桐乡新世纪大酒店凤栖宫',
+    hoteladdress: '中国浙江省嘉兴市桐乡市庆丰南路6号',
+    markers: [{
+      id: 0, //must have or can't triggle event
+      latitude: 30.6206900000,
+      longitude: 120.5510600000,
+      name: '桐乡新世纪大酒店凤栖宫'
+    }],
   },
-
   /**
-   * Lifecycle function--Called when page load
+   * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function () {
 
   },
 
   /**
-   * Lifecycle function--Called when page is initially rendered
+   * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
 
   },
 
   /**
-   * Lifecycle function--Called when page show
+   * 生命周期函数--监听页面显示
    */
   onShow: function () {
 
   },
 
   /**
-   * Lifecycle function--Called when page hide
+   * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
 
   },
 
   /**
-   * Lifecycle function--Called when page unload
+   * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
 
   },
 
   /**
-   * Page event handler function--Called when user drop down
+   * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
 
   },
 
   /**
-   * Called when page reach bottom
+   * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
 
   },
 
-  /**
-   * Called when user click on the top right corner to share
-   */
-  onShareAppMessage: function () {
-
+  callhe: function (event) {
+    wx.makePhoneCall({
+      phoneNumber: this.data.he_tel
+    })
+  },
+  callshe: function (event) {
+    wx.makePhoneCall({
+      phoneNumber: this.data.she_tel
+    })
+  },
+  markertap: function (event) {
+    wx.openLocation(
+      {
+        latitude: this.data.latitude,
+        longitude: this.data.longitude,
+        scale: 18,
+        name: this.data.hotelname,
+        address: this.data.hoteladdress
+      }
+    )
   }
 })

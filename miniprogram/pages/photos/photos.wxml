@@ -1,2 +1,10 @@
-<!--miniprogram/pages/photos/photos.wxml-->
-<text>miniprogram/pages/photos/photos.wxml</text>
+<!--miniprogram/pages/photos/index.wxml-->
+<view class="container">
+    <view class="swiper">
+        <swiper indicator-dots="true"autoplay="true" interval="5000" vertical="true" circular="true">
+            <swiper-item wx:for="{{slideList}}" wx:key="slide" wx:id="id" >
+                <image src="{{item}}" class="slide-image" mode="aspectFill" bindtap='previewImage'/>
+            </swiper-item>
+        </swiper>
+    </view>
+</view>

@@ -1,2 +1,23 @@
-<!--miniprogram/pages/map/map.wxml-->
-<text>miniprogram/pages/map/map.wxml</text>
+<!--miniprogram/pages/map/index.wxml-->
+<view class="container">
+  <image src='/images/t1.png' class='t1'></image>
+  <view class="map">
+    <map id="map" longitude="{{longitude}}" enable-scroll="false" show-compass latitude="{{latitude}}" scale="18" markers="{{markers}}" bindmarkertap="markertap" show-location ></map>
+  </view>
+  <view class="tel">
+    <view class="tel_he">
+      <view class="call" bindtap="callhe">
+        <image src="/images/he.jpg" width="75%" />
+      </view>
+      呼叫新郎
+    </view>
+    <view class="tel_she">
+      <view class="call" bindtap="callshe">
+        <image src="/images/she.jpg" width="75%" />
+      </view>
+      呼叫新娘
+    </view>
+  </view>
+  <view class='copyright'>Made With ❤ By  天宇 & 依依</view>
+  <view class='copyright'>©2019 tianyxu</view>
+</view>
