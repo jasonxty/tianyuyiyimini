@@ -7,7 +7,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-    signSta: false
+    signSta: false,
+    nickname: '',
+    face: '',
+    city: '',
+    gender: 0,
+    language: '',
+    login: false
   },
 
   /**
@@ -28,11 +34,6 @@ Page({
   },
 
   formSubmit(event) {
-    var userInfo = app.globalData.userInfo;
-    var nickname = userInfo.nickName;
-    var face = userInfo.avatarUrl;
-    var city = userInfo.city;
-
     var name = event.detail.value.name;
     if (name == '') {
       wx.showToast({
@@ -62,11 +63,14 @@ Page({
     const db = wx.cloud.database();
     db.collection('attendencelist').add({
       data: {
-        'nickname': nickname,
-        'face': face,
-        'name': name,
+        'nickname': this.data.nickname,
+        'face': this.data.face,
+        'gender': this.data.gender,
+        'language': this.data.language,
+        'city': this.data.city,
+        'login': this.data.login,
         'tel': tel,
-        'city': city,
+        'name': name,
         'plan': plan,
         'extra': extra
       },
@@ -86,7 +90,19 @@ Page({
       }
     })
   },
-
+  onGetUserInfo: function (e) {
+    console.log('onGetUserInfo is called!');
+    if (e.detail.userInfo) {
+      console.log('onGetUserInfo is called successfully!');
+      var userInfo = e.detail.userInfo;
+      this.data.nickname = userInfo.nickName;
+      this.data.face = userInfo.avatarUrl;
+      this.data.gender = userInfo.gender;
+      this.data.city = userInfo.city;
+      this.data.language = userInfo.language;
+      this.data.login = app.globalData.isLogin;
+    }
+  },
   /**
    * 用户点击右上角分享
    */

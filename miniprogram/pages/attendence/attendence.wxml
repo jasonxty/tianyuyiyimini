@@ -20,7 +20,13 @@
         </view>
     </view>
     <view class='btn_area'>
-        <view class='sign_btn' bindtap='signIn'>我要出席</view>
+    <view bindtap='signIn'>
+      <button
+      class='sign_btn' 
+      open-type='getUserInfo'
+      bindgetuserinfo="onGetUserInfo"
+      >我要出席</button>
+    </view>
     </view>
 
     <view class="send_msg" wx:if="{{signSta}}">
@@ -65,7 +71,7 @@
                     <textarea class='textarea' name="extra" placeholder="比如当天想上台唱歌，或者上台分享人生经验、寄语新人" fixed="true" />
                 </view>
             </view>
-            <button type="primary" class="send_btn" formType="submit">确定提交</button>
+            <button class="send_btn" formType="submit">确定提交</button>
             <view class='cancel_msg' bindtap='cancelMsg'>取消</view>
         </form>
     </view>

@@ -78,6 +78,7 @@ page {
     font-size: 36rpx;
     line-height: 100rpx;
     float: left;
+    color: #fff;
     background-image: linear-gradient(135deg, #FEB692 0%, #EA5455 100%);
     box-shadow: 0 10rpx 20rpx -6rpx rgba(238, 103, 97, 0.5);
 }
@@ -98,7 +99,7 @@ page {
     min-height: 0;
     overflow: hidden;
     display: flex;
-    padding: 20rpx 10rpx;
+    padding: 10rpx 10rpx;
     align-items: center;
     justify-content: space-around;
     background-color: #fff;
@@ -110,15 +111,14 @@ page {
     border-bottom: 1px solid #f1f1f1;
 }
 .sign_btn {
-    width: 700rpx;
+    width: 680rpx;
     height: 100rpx;
     font-size: 36rpx;
     line-height: 100rpx;
-    border-radius: 10rpx;
     color: #fff;
     text-align: center;
     background-image: linear-gradient(135deg, #FEB692 0%, #EA5455 100%);
-    box-shadow: 0 10rpx 20rpx -6rpx rgba(238, 103, 97, 0.5);
+    box-shadow: 0 10rpx 10rpx -6rpx rgba(238, 103, 97, 0.5);
 }
 .cancel_msg {
     width: 180rpx;
