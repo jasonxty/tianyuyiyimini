@@ -3,7 +3,9 @@ App({
   globalData: {
     userInfo: null,
     openid: '',
-    isLogin: false
+    isLogin: false,
+    hasUserInfo: false,
+    backIndex: false
   },
   onLaunch: function () {
     // cloud init
@@ -48,6 +50,7 @@ App({
           wx.getUserInfo({
             success: res => {
               this.globalData.userInfo = res.userInfo;
+              this.globalData.hasUserInfo = true;
               console.log(res.userInfo);
             }
           })

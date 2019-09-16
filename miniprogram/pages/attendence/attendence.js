@@ -101,6 +101,7 @@ Page({
       this.data.city = userInfo.city;
       this.data.language = userInfo.language;
       this.data.login = app.globalData.isLogin;
+      console.log(this.data);
     }
   },
   /**

@@ -184,12 +184,12 @@ page {
   margin-right: 10rpx;
   width: 40rpx;
   height: 40rpx;
-  background-image: url('https://wx.qiaker.cn/static/uploadfile/2018/1211/20181211223208_884.png');
+  background-image: url('https://7874-xtydtc01-1259619275.tcb.qcloud.la/miscpics/checkbox.jpg?sign=7a412a1ecebfc6638a08177c8d68284c&t=1568543527');
   background-size: 100%;
 }
 
 .ws-checkbox[checked] {
-  background-image: url('https://wx.qiaker.cn/static/uploadfile/2018/1211/20181211223147_449.png');
+  background-image: url('https://7874-xtydtc01-1259619275.tcb.qcloud.la/miscpics/checkedbox.jpg?sign=f291acca8464e96c425fce7ffccd4e9c&t=1568543502');
 }
 .sign_top {
     display: block;

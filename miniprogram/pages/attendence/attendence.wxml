@@ -1,20 +1,6 @@
 <!--miniprogram/pages/attendence/index.wxml-->
 <view class="container">   
-    <view wx:if="{{chatNum > 0}}">
-        <view class="chat_list" wx:for="{{chatList}}" wx:key="user">
-            <view class="chat_face">
-                <image src="{{item.face}}" />
-            </view>
-            <view class="chat_words">
-                <view class="chat_meta">
-                    <text class="chat_user">{{item.nickname}} </text>
-                    <text class="chat_date fr">{{item.time}}</text>
-                </view>
-                <view>{{item.words}}</view>
-            </view>
-        </view>
-    </view>
-    <view wx:else>
+    <view>
         <view class="befirst">
             <image src="/images/lovemail.gif" />
         </view>
@@ -28,7 +14,6 @@
       >我要出席</button>
     </view>
     </view>
-
     <view class="send_msg" wx:if="{{signSta}}">
         <image src='/images/grren-flower-line.png' class='sign_top' mode="aspectFit"></image>
         <form bindsubmit="formSubmit">
@@ -68,7 +53,7 @@
             <view class='form-label'>
                 <view class='form-tit'>备注需求</view>
                 <view class="form-ipt">
-                    <textarea class='textarea' name="extra" placeholder="比如当天想上台唱歌，或者上台分享人生经验、寄语新人" fixed="true" />
+                    <textarea class='textarea' name="extra" placeholder="比如当天想上台唱歌助兴，或者上台分享人生经验、寄语新人，亦或者分享和新人之间的经历。" fixed="true" />
                 </view>
             </view>
             <button class="send_btn" formType="submit">确定提交</button>

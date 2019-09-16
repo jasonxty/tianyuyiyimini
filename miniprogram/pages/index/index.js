@@ -1,6 +1,6 @@
 // pages/invitation/index.js
-const app = getApp()
-
+const app = getApp();
+const back = wx.getBackgroundAudioManager();
 var touchDot = 0; //触摸时的原点  
 var time = 0; // 时间记录，用于滑动时且时间小于1s则执行左右滑动 
 var interval = ""; // 记录/清理时间记录 
@@ -11,22 +11,36 @@ Page({
    */
   data: {
     animationData: "",
-    music_url: 'https://7874-xtydtc01-1259619275.tcb.qcloud.la/jayzhouwedding.mp3?sign=efdd7e8734bb9bfa2ca04ce227859d84&t=1565089175',
     isPlayingMusic: true,
     mainInfo: {
-      cover: "https://7874-xtydtc01-1259619275.tcb.qcloud.la/weddingphotos/20190806.jpg?sign=1ce77b10cbda59d1a207f5fc3b175525&t=1565091560",
+      cover: "https://7874-xtydtc01-1259619275.tcb.qcloud.la/miscpics/cover.jpg?sign=63ffbb16b8dae40530979a6944e50243&t=1567834137",
       date: "2019年10月1日",
       lunar: "九月初三",
       hotel: "桐乡新世纪大酒店",
-     }
+     },
+     hasUserInfo: false,
+     userInfo: null,
+     realSta:false,
+     showModal:false,
+     invitation: "",
+     nickName: ""
   },
+  backmusic: function() {
+    player();
+    function player() {
+      back.title = "jayweddingmusic",
+      back.src = 'https://7874-xtydtc01-1259619275.tcb.qcloud.la/jayzhouwedding.mp3?sign=efdd7e8734bb9bfa2ca04ce227859d84&t=1565089175',
+      back.onEnded(() => {
+        player();
+      }) 
+    }
+  },
+
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-    //创建动画
     var animation = wx.createAnimation({
 
       duration: 3600,
@@ -35,22 +49,12 @@ Page({
       transformOrigin: "50% 50%",
 
     })
-
-
     animation.scale(0.9).translate(10, 10).step(); //边旋转边放大
-
-
     //导出动画数据传递给组件的animation属性。
     this.setData({
       animationData: animation.export(),
-    })
-
-    var that = this
-    wx.playBackgroundAudio({
-      dataUrl: this.data.music_url,
-      title: '',
-      coverImgUrl: ''
-    })
+    });
+    this.backmusic();
   },
 
   /**
@@ -64,7 +68,12 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log('run hereerer')
+    console.log('backIndex', app.globalData.backIndex)
+    if (app.globalData.backIndex) {
+      console.log('run herere4')
+      this.showrealInv()
+    }
   },
 
   /**
@@ -94,7 +103,42 @@ Page({
   onReachBottom: function () {
 
   },
+  getrealInv: function() {
+    if (!app.globalData.hasUserInfo) {
+      console.log('run here1')
+      wx.navigateTo({
+        url: './authorize',
+      })
+    } else {
+      this.showrealInv()
+    }
+  },
 
+  showrealInv: function() {
+    console.log('run here2');
+    this.submit()
+    this.setData({
+      userInfo: app.globalData.userInfo,
+      nickName: app.globalData.userInfo.nickName
+    })
+    const db = wx.cloud.database()
+    db.collection('invitation').where({
+      nickName: app.globalData.userInfo.nickName
+    }).field({
+      invitation: true
+    }).get({
+      success: res => {
+        console.log('XTYDBGsucessful')
+        console.log((res.data[0]).invitation)
+        this.setData({
+          invitation: (res.data[0]).invitation
+        })
+      },
+      fail: function (res) {
+        console.log('fail')
+      }
+    })
+  },
   /**
    * 用户点击右上角分享
    */
@@ -125,14 +169,26 @@ Page({
         isPlayingMusic: false
       })
     } else {
-      wx.playBackgroundAudio({
-        dataUrl: this.data.music_url,
-        title: '',
-        coverImgUrl: ''
-      })
+      this.backmusic();
       this.setData({
         isPlayingMusic: true
       })
     }
   },
+
+  submit: function() {
+    this.setData({
+      showModal:true
+    })
+  },
+
+  preventTouchMove: function() {
+
+  },
+
+  go: function() {
+    this.setData({
+      showModal:false
+    })
+  }
 })

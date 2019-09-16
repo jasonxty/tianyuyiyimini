@@ -1,16 +1,14 @@
 <!--pages/index/index.wxml-->
-<view wx:if="{{music_url}}">
-  <view wx:if="{{isPlayingMusic}}">
-    <view class="background_music" bindtap="play">
-      <image src="/images/music_icon.png" class="musicImg music_icon"/>
-      <image src="/images/music_play.png" class="music_play pauseImg" />
-    </view>
+<view wx:if="{{isPlayingMusic}}">
+  <view class="background_music" bindtap="play">
+    <image src="/images/music_icon.png" class="musicImg music_icon"/>
+    <image src="/images/music_play.png" class="music_play pauseImg"/>
   </view>
-  <view wx:else>
-    <view class="background_music" bindtap="play">
-      <image src="/images/music_icon.png" class="musicImg"/>
-      <image src="/images/music_play.png" class="music_play playImg" />
-    </view>
+</view>
+<view wx:else>
+  <view class="background_music" bindtap="play">
+    <image src="/images/music_icon.png" class="musicImg"/>
+    <image src="/images/music_play.png" class="music_play playImg" />
   </view>
 </view>
 <view class="container">
@@ -18,13 +16,25 @@
     <image src='{{mainInfo.cover}}' class='cover' mode='aspectFill'></image>
     <view class='datetime' animation="{{animationData}}">
         <view class='box'>
-            <view class="date css13610f7ae66601">
+            <view class="date" bindtap="getrealInv">
                 <view>谨定于 {{mainInfo.date}} </view>
                 <view>农历 {{mainInfo.lunar}} 举办婚礼</view>
                 <view>席设: {{mainInfo.hotel}}</view>
                 <view>恭请您的光临!</view>
+                <view>点击这里有彩蛋!</view>
             </view>
             <image class="we" src='/images/we.png'></image>
         </view>
     </view>
+</view>
+
+<view class="mask" catchtouchmove="preventTouchMove" wx:if="{{showModal}}" bindtap="go"></view>
+<view class="modalDlg" wx:if="{{showModal}}">
+  <image src='/images/grren-flower-line.png' class='sign_top' mode="aspectFit"></image>
+  <text class='nickName'>亲爱的{{nickName}}:</text>
+  <text class='invitation'>{{invitation}}</text>
+  <view class='signature'>
+    <text> 天宇 & 依依❤\n2019年9月16日</text>
+  </view>
+  
 </view>
