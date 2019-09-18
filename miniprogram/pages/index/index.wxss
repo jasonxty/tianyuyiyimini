@@ -155,3 +155,8 @@ to{-webkit-transform:rotate(20deg);}
   right: 30rpx;
   bottom: 30rpx;
 }
+
+.egg {
+  text-decoration-line: underline;
+  text-emphasis-color: black;
+}

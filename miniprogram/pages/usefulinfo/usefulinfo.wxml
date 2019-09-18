@@ -1,2 +1,22 @@
-<!--miniprogram/pages/usefulinfo/usefulinfo.wxml-->
-<text>under development</text>
+<view class="page-body">
+  <view class="page-section">
+    <text class="page-section-title">1.婚礼时间及地点\n</text>
+    <text class="contenttext">婚礼大概12点左右在桐乡新世纪大酒店凤栖宫举行，不要迟到哈。</text>
+  </view>
+  <view class="page-section">
+    <text class="page-section-title">2.紧急联系人\n</text>
+    <text class="contenttext" bindtap="tap2">徐鑫宇：18268363525，点击这里可拨打。</text>
+  </view>
+  <view class="page-section">
+    <text class="page-section-title">3.注意事项\n</text>
+    <text class="contenttext" bindtap="tap3">A. 国庆期间，交通订票要尽早哈。\n B. 照片，留言，祝福，反馈等可以点击这里进入天宇依依婚礼专属聊天室。\n C. 当天照片可能可以在聊天室找到。</text>
+  </view>
+  <view class="page-section">
+    <text class="page-section-title">4.桐乡周边景点推荐\n</text>
+    <text class="contenttext">乌镇、南湖、南北湖、西塘等。</text>
+  </view>
+  <view class="page-section">
+    <text class="page-section-title">5.桐乡美食推荐\n</text>
+    <text class="contenttext">阿能面、桐乡煲（利华煲好像还不错）、菊花等。</text>
+  </view>
+</view>

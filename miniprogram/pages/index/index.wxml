@@ -21,7 +21,7 @@
                 <view>农历 {{mainInfo.lunar}} 举办婚礼</view>
                 <view>席设: {{mainInfo.hotel}}</view>
                 <view>恭请您的光临!</view>
-                <view>点击这里有彩蛋!</view>
+                <view class="egg">点击这里有彩蛋🎁!</view>
             </view>
             <image class="we" src='/images/we.png'></image>
         </view>

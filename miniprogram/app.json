@@ -5,7 +5,9 @@
     "pages/attendence/attendence",
     "pages/index/index",
     "pages/index/authorize",
-    "pages/usefulinfo/usefulinfo"
+    "pages/usefulinfo/usefulinfo",
+    "components/chatroom/chatroom",
+    "pages/room/room"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

@@ -1,1 +1,25 @@
-/* miniprogram/pages/usefulinfo/usefulinfo.wxss */
+.contenttext {
+  position: relative;
+  left: 25rpx;
+  right: 25rpx;
+  text-align: justify;
+}
+
+.page-section{
+  margin-top: 30rpx;
+  margin-bottom: 30rpx;
+  padding-left: 30rpx;
+  padding-right: 50rpx;
+}
+
+.page-section-title{
+  font-size: 40rpx;
+  color: #f08080;
+  margin-bottom: 30rpx;
+  padding-left: 10rpx;
+}
+
+.page-body{
+  background-color: #fff;
+  padding-top:30rpx;
+}

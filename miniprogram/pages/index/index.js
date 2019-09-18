@@ -22,7 +22,7 @@ Page({
      userInfo: null,
      realSta:false,
      showModal:false,
-     invitation: "",
+     invitation: "很感谢有婚礼这个机会可以和你沟通，相信一定是特别的缘分让我们彼此认识，相互影响，诚挚的邀请你来参加我们10月1号在桐乡的婚礼，希望你有一个开心的时光。",
      nickName: ""
   },
   backmusic: function() {
@@ -124,14 +124,13 @@ Page({
     const db = wx.cloud.database()
     db.collection('invitation').where({
       nickName: app.globalData.userInfo.nickName
-    }).field({
-      invitation: true
     }).get({
       success: res => {
         console.log('XTYDBGsucessful')
         console.log((res.data[0]).invitation)
         this.setData({
-          invitation: (res.data[0]).invitation
+          invitation: (res.data[0]).invitation,
+          nickName: (res.data[0]).realName
         })
       },
       fail: function (res) {
