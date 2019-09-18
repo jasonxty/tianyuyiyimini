@@ -28,7 +28,7 @@ Page({
   backmusic: function() {
     player();
     function player() {
-      back.title = "jayweddingmusic",
+      back.title = "JEweddingmusic",
       back.src = 'https://7874-xtydtc01-1259619275.tcb.qcloud.la/jayzhouwedding.mp3?sign=efdd7e8734bb9bfa2ca04ce227859d84&t=1565089175',
       back.onEnded(() => {
         player();

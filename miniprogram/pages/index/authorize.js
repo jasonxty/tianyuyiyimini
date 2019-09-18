@@ -83,24 +83,16 @@ Page({
 
   },
 
-  jumpBackToIndex: function () {
-    console.log('xtydbghere2')
-    console.log(app.globalData.hasUserInfo)
-    if (app.globalData.hasUserInfo) {
-      console.log('run here xty')
-      wx.navigateBack({
-        url: './index',
-      })
-    }
-  },
-
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
-    app.globalData.hasUserInfo = true
-    app.globalData.backIndex = true
-    console.log('xtydbghere3')
-    console.log(app.globalData.userInfo)
-    this.jumpBackToIndex()
+    if (e.detail.errMsg == "getUserInfo:ok") {
+      app.globalData.hasUserInfo = true;
+      app.globalData.backIndex = true;
+      console.log('xtydbghere3')
+    }
+    wx.navigateBack({
+      url: './index',
+    })
   }
 })
