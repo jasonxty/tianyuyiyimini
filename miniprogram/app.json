@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/map/map",
-    "pages/photos/photos",
-    "pages/attendence/attendence",
     "pages/index/index",
+    "pages/photos/photos",
+    "pages/map/map",
+    "pages/attendence/attendence",
     "pages/index/authorize",
     "pages/usefulinfo/usefulinfo"
   ],

@@ -22,7 +22,8 @@ Page({
      userInfo: null,
      realSta:false,
      showModal:false,
-     invitation: "很感谢有婚礼这个机会可以和你沟通，相信一定是特别的缘分让我们彼此认识，相互影响，诚挚的邀请你来参加我们10月1号在桐乡的婚礼，希望你有一个开心的时光。",
+     dfinvitation: "很感谢有婚礼这个机会可以和你沟通，相信一定是特别的缘分让我们彼此认识，相互影响，诚挚的邀请你来参加我们10月1号在桐乡的婚礼，希望你有一个开心的时光。",
+     invitation: "",
      nickName: ""
   },
   backmusic: function() {
@@ -116,27 +117,33 @@ Page({
 
   showrealInv: function() {
     console.log('run here2');
-    this.submit()
-    this.setData({
-      userInfo: app.globalData.userInfo,
-      nickName: app.globalData.userInfo.nickName
-    })
     const db = wx.cloud.database()
     db.collection('invitation').where({
       nickName: app.globalData.userInfo.nickName
     }).get({
       success: res => {
-        console.log('XTYDBGsucessful')
-        console.log((res.data[0]).invitation)
+        console.log('XTYDBGsucessful');
+        console.log(app.globalData.userInfo.nickName);
+        console.log(this.data.dfinvitation);
         this.setData({
-          invitation: (res.data[0]).invitation,
-          nickName: (res.data[0]).realName
+          invitation: this.data.dfinvitation,
+          nickName: app.globalData.userInfo.nickName
         })
+        if(res){
+          this.setData({
+            invitation: (res.data[0]).invitation,
+            nickName: (res.data[0]).realName
+          })
+        }
       },
-      fail: function (res) {
-        console.log('fail')
+      fail: res => {
+        console.log('failure')
+        this.setData({
+          nickName: app.globalData.userInfo.nickName
+        })
       }
     })
+    this.submit()
   },
   /**
    * 用户点击右上角分享
